@@ -28,7 +28,7 @@ The simulation will be based on Newton’s law of universal gravitation and simp
 
 For every pair of bodies, the gravitational force will be calculated using the formula:
 
-F = G * (m1 * m2) / r²
+`F = G * (m1 * m2) / r²`
 
 where:
 - G is the gravitational constant
@@ -44,11 +44,11 @@ The simulation will use a discrete time step approach.
 For each time step:
 1. Calculate gravitational forces between all bodies.
 2. Compute acceleration using Newton’s second law:  
-   a = F / m
+   `a = F / m`
 3. Update velocity:  
-   v = v + a * dt
+   `v = v + a * dt`
 4. Update position:  
-   x = x + v * dt
+   `x = x + v * dt`
 
 The Euler method will be used due to its simplicity and suitability for educational purposes.
 
