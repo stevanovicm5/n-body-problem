@@ -51,7 +51,7 @@ def append_state(csv_path: str, step: int, bodies: List[Body]):
             w.writerow([step, i, b.position[0], b.position[1], b.velocity[0], b.velocity[1]])
 
 # -----------------------------
-# Fizički proračuni
+# Fizicki proracuni
 # -----------------------------
 def compute_forces_sequential(bodies: List[Body]) -> np.ndarray:
     """Vrati sile (N x 2) za sva tela — sekvencijalno."""
@@ -75,7 +75,7 @@ def compute_forces_sequential(bodies: List[Body]) -> np.ndarray:
 
 # ---- Paralelni deo ----
 def _forces_chunk(args) -> Tuple[int, int, np.ndarray]:
-    """Radnik: računa sile za tela u intervalu [start, end)."""
+    """Radnik: racuna sile za tela u intervalu [start, end)."""
     start, end, masses, positions = args
     n = positions.shape[0]
     out = np.zeros((end - start, 2), dtype=np.float64)
@@ -108,7 +108,7 @@ def compute_forces_parallel_with_pool(bodies, pool, nprocs: int) -> np.ndarray:
         tasks.append((start, end, masses, positions))
 
     forces = np.zeros((n, 2), dtype=np.float64)
-    # koristimo već postojeći pool
+    # koristimo vec postojeci pool
     for start, end, chunk_forces in pool.map(_forces_chunk, tasks):
         forces[start:end, :] = chunk_forces
     return forces
